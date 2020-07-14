@@ -289,11 +289,10 @@ fi
 # apt-cacher-ng mirror configurarion
 if [[ $DISTRIBUTION == Ubuntu ]]; then
 	APT_MIRROR=$UBUNTU_MIRROR
-#	APT_MIRROR=$DEBIAN_MIRROR
-elif [[ $RELEASE == Kali-rolling ]]; then
+elif [[ $RELEASE == kali-rolling ]]; then
 	APT_MIRROR=$KALI_MIRROR
 else
-       APT_MIRROR=$DEBIAN_MIRROR
+	APT_MIRROR=$DEBIAN_MIRROR
 fi
 
 [[ -n $APT_PROXY_ADDR ]] && display_alert "Using custom apt-cacher-ng address" "$APT_PROXY_ADDR" "info"
