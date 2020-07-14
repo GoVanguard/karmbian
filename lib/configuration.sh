@@ -229,7 +229,7 @@ case $RELEASE in
 		PACKAGE_LIST_DESKTOP_FULL+=" thunderbird"
 	;;
 
-	bullseye|kali-rolling)
+	bullseye)
 		DEBOOTSTRAP_COMPONENTS="main"
 		DEBOOTSTRAP_LIST+=" haveged fdisk"
 		[[ -z $BUILD_MINIMAL || $BUILD_MINIMAL == no ]] && PACKAGE_LIST_RELEASE="man-db kbd net-tools gnupg2 dirmngr networkd-dispatcher command-not-found"
@@ -259,6 +259,15 @@ case $RELEASE in
 								language-selector-gnome mirage"
 		PACKAGE_LIST_DESKTOP_FULL+=" thunderbird"
 		PACKAGE_LIST_PREDEPENDS="policykit-1-gnome notification-daemon"
+	;;
+
+	kali-rolling)
+		DEBOOTSTRAP_COMPONENTS="main,contrib,non-free"
+		DEBOOTSTRAP_LIST+=" haveged fdisk"
+		[[ -z $BUILD_MINIMAL || $BUILD_MINIMAL == no ]] && PACKAGE_LIST_RELEASE="kali-linux-core man-db kbd net-tools gnupg2 dirmngr networkd-dispatcher command-not-found"
+		PACKAGE_LIST_DESKTOP+=" kali-linux-default kali-defaults kali-menu paprefs dbus-x11 numix-icon-theme"
+		PACKAGE_LIST_DESKTOP_RECOMMENDS+=" firefox-esr system-config-printer-common system-config-printer"
+		PACKAGE_LIST_DESKTOP_FULL+=""
 	;;
 
 esac

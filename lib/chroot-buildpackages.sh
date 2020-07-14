@@ -41,7 +41,7 @@ create_chroot()
 	components['bionic']='main,universe,multiverse'
 	components['focal']='main,universe,multiverse'
 	components['eoan']='main,universe,multiverse'
-	components['kali-rolling']='main,contrib'
+	components['kali-rolling']='main,contrib,non-free'
 	display_alert "Creating build chroot" "$release/$arch" "info"
 	local includes="ccache,locales,git,ca-certificates,devscripts,libfile-fcntllock-perl,debhelper,rsync,python3,distcc"
 	# perhaps a temporally workaround
@@ -101,7 +101,7 @@ chroot_prepare_distccd()
 	gcc_version['bionic']='5.4'
 	gcc_version['focal']='9.2'
 	gcc_version['eoan']='9.2'
-	gcc_version['kali-rolling']='9.3'
+	gcc_version['kali-rolling']='9.2'
 	gcc_type['armhf']='arm-linux-gnueabihf-'
 	gcc_type['arm64']='aarch64-linux-gnu-'
 	rm -f "${dest}"/cmdlist
