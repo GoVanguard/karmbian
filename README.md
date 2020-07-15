@@ -17,9 +17,8 @@ Karmbian
 
 ## Overview
 
-- builds custom Debian or Kali based Linux system optimized for [supported single board computers](https://www.armbian.com/download/),
+- builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian,
 - covers root filesystem generation, kernel image compilation and bootloader compilation,
-- maintains low-level control software for a [selection of hardware](https://www.armbian.com/download/),
 - provides a consistent user experience by keeping system standards across different SBC platforms.
 
 <p align=right>&nbsp;</p>
