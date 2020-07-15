@@ -82,13 +82,10 @@ KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
 - For RockPro64 and Rock64 visit https://github.com/GoVanguard/karmbian/releases
 - For others visit https://armbian.com/download
 
-
-Armbian [releases](https://docs.armbian.com/Release_Changelog/) quarterly at the end of [February, May, August, November](https://github.com/armbian/documentation/blob/master/docs/Process_Release-Model.md). You are welcome to propose changes to our default [images build list](https://github.com/armbian/build/blob/master/config/targets.conf).
-
-
 <p align=right><a href=#table-of-contents>⇧</a></p>
 
 ## Credits
 
 Kali support developed by Shane Scott, GoVanguard.
+<p>
 Credit to Armbian and all of their contributors for the base system.
