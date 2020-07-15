@@ -129,6 +129,10 @@ if [[ $RELEASE == xenial || $RELEASE == bionic || $RELEASE == focal || $RELEASE 
 		DISTRIBUTION="Debian"
 fi
 
+if [[ $RELEASE == kali-rolling ]]; then
+	DISTRIBUTION="Kali"
+fi
+
 # Base system dependencies. Since adding MINIMAL_IMAGE we rely on "variant=minbase" which has very basic package set
 DEBOOTSTRAP_LIST="locales gnupg ifupdown apt-utils apt-transport-https ca-certificates bzip2 console-setup cpio cron \
 	dbus init initramfs-tools iputils-ping isc-dhcp-client kmod less libpam-systemd \
@@ -265,7 +269,7 @@ case $RELEASE in
 		DEBOOTSTRAP_COMPONENTS="main,contrib,non-free"
 		DEBOOTSTRAP_LIST+=" haveged fdisk"
 		[[ -z $BUILD_MINIMAL || $BUILD_MINIMAL == no ]] && PACKAGE_LIST_RELEASE="kali-linux-core man-db kbd net-tools gnupg2 dirmngr networkd-dispatcher command-not-found"
-		PACKAGE_LIST_DESKTOP+=" kali-linux-default kali-defaults kali-menu paprefs dbus-x11 numix-icon-theme"
+		PACKAGE_LIST_DESKTOP+=" kali-linux-default kali-defaults kali-menu paprefs dbus-x11 kali-themes kali-themes-common kali-community-wallpapers"
 		PACKAGE_LIST_DESKTOP_RECOMMENDS+=" firefox-esr system-config-printer-common system-config-printer"
 		PACKAGE_LIST_DESKTOP_FULL+=""
 	;;
