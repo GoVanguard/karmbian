@@ -59,11 +59,18 @@ Run build tools inside Docker container:
 ./compile.sh docker
 ```
 
-Build minimal CLI Debian buster based image for Odroid XU4. Use modern kernel and write image to the SD card:
+Build minimal CLI of Kali 2020 for the Rock64 (Not RockPro64):
 
 ```text
-./compile.sh BOARD="odroidxu4" BRANCH="current" RELEASE="buster" CARD_DEVICE="/dev/sda" \
-KERNEL_ONLY="no" KERNEL_CONFIGURE="no" BUILD_DESKTOP="no" BUILD_MINIMAL="yes"
+./compile.sh  BOARD=rock64 BRANCH=dev RELEASE=kali-rolling BUILD_MINIMAL=yes BUILD_DESKTOP=no \
+KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
+```
+
+Build full desktop of Kali 2020 for the RockPro64:
+
+```test
+./compile.sh  BOARD=rockpro64 BRANCH=dev RELEASE=kali-rolling BUILD_MINIMAL=no BUILD_DESKTOP=yes \
+KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
 ```
 
 [Build parameters, advanced build options, user defined configuration, build with Docker?](#additional-information)
