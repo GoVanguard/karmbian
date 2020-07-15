@@ -1,10 +1,8 @@
-<h3 align=center><a href="#armbian-build-tools"><img src=".github/armbian-logo.png" alt="Armbian logo" width="144"></a><br>
-build tools</h3>
+<h3 align=center><a href="https://Govanguard.com/kali"><img src=".github/kali.png" alt="Kali logo" width="144"></a><br>
+Kali Armbian
+</h3>
 
 <p align=right>&nbsp;</p>
-
-[![Build](https://github.com/armbian/build/workflows/Build/badge.svg)](https://github.com/armbian/build/actions?query=workflow%3ABuild)
-[![Twitter Follow](https://img.shields.io/twitter/follow/armbian?style=flat-square)](https://twitter.com/intent/follow?screen_name=armbian)
 
 ## Table of contents
 
@@ -24,9 +22,9 @@ build tools</h3>
 
 <p align=right>&nbsp;</p>
 
-## What this project does?
+## Overview
 
-- builds custom Debian based Linux system optimized for [supported single board computers](https://www.armbian.com/download/),
+- builds custom Debian or Kali based Linux system optimized for [supported single board computers](https://www.armbian.com/download/),
 - covers root filesystem generation, kernel image compilation and bootloader compilation,
 - maintains low-level control software for a [selection of hardware](https://www.armbian.com/download/),
 - provides a consistent user experience by keeping system standards across different SBC platforms.
@@ -37,6 +35,7 @@ build tools</h3>
     
 - x64 machine with at least 2GB of memory and ~35GB of disk space for the VM, container or native OS,
 - Ubuntu Bionic 18.04 / Focal 20.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised,
+- Kali 2020 x64 for native building, aria2 compiled and installed seperately
 - superuser rights (configured sudo or root access).
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
@@ -45,7 +44,7 @@ build tools</h3>
 
 ```text
 apt-get -y install git
-git clone https://github.com/armbian/build
+git clone https://github.com/GoVanguard/armbian
 cd build
 ./compile.sh
 ```
@@ -98,7 +97,9 @@ Function | Armbian | Yocto | Buildroot |
 
 ## Where to download prebuilt images?
 
-https://www.armbian.com/download/
+- For RockPro64 and Rock64 visit https://www.govanguard.com/download/rock
+- For others visit https://armbian.com/download
+
 
 Armbian [releases](https://docs.armbian.com/Release_Changelog/) quarterly at the end of [February, May, August, November](https://github.com/armbian/documentation/blob/master/docs/Process_Release-Model.md). You are welcome to propose changes to our default [images build list](https://github.com/armbian/build/blob/master/config/targets.conf).
 
