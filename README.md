@@ -1,5 +1,5 @@
 <h3 align=center><a href="https://Govanguard.com/kali"><img src=".github/kali.png" alt="Kali logo" width="144"></a><br>
-Kali Armbian
+Karmbian
 </h3>
 
 <p align=right>&nbsp;</p>
