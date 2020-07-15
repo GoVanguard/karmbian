@@ -36,7 +36,7 @@ Karmbian
 
 ```text
 apt-get -y install git
-git clone https://github.com/GoVanguard/armbian
+git clone https://github.com/GoVanguard/karmbian
 cd build
 ./compile.sh
 ```
