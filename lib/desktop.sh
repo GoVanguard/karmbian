@@ -38,42 +38,63 @@ create_desktop_package ()
 	Description: Armbian desktop for ${DISTRIBUTION} ${RELEASE}
 	EOF
 
-	cat <<-EOF > "${destination}"/DEBIAN/postinst
-	#!/bin/sh -e
+	if [[ ${RELEASE} == kali-rolling ]]; then
+		cat <<-EOF > "${destination}"/DEBIAN/postinst
+		#!/bin/sh -e
 
-		# overwrite stock chromium and firefox configuration
-		if [ -d /etc/chromium-browser/ ]; then ln -sf /etc/armbian/chromium.conf /etc/chromium-browser/default; fi
-		if [ -d /etc/chromium.d/ ]; then ln -sf /etc/armbian/chromium.conf /etc/chromium.d/chromium.conf; fi
-		cp -R /etc/armbian/chromium /usr/share
-		# overwrite stock lightdm greeter configuration
-		if [ -d /etc/armbian/lightdm ]; then cp -R /etc/armbian/lightdm /etc/; fi
+			# overwrite stock lightdm greeter configuration
+			if [ -d /etc/armbian/lightdm ]; then cp -R /etc/armbian/lightdm /etc/; fi
 
+			# Hide few items
+			if [ -f /usr/share/applications/display-im6.q16.desktop ]; then mv /usr/share/applications/display-im6.q16.desktop /usr/share/applications/display-im6.q16.desktop.hidden; fi
+			if [ -f /usr/share/applications/display-im6.desktop ]]; then  mv /usr/share/applications/display-im6.desktop /usr/share/applications/display-im6.desktop.hidden; fi
+			if [ -f /usr/share/applications/vim.desktop ]]; then  mv /usr/share/applications/vim.desktop /usr/share/applications/vim.desktop.hidden; fi
+			if [ -f /usr/share/applications/libreoffice-startcenter.desktop ]]; then mv /usr/share/applications/libreoffice-startcenter.desktop /usr/share/applications/libreoffice-startcenter.desktop.hidden; fi
 
-		if [ -d /usr/lib/firefox-esr/ ]; then
-			ln -sf /etc/armbian/firefox.conf /usr/lib/firefox-esr/mozilla.cfg
-			echo 'pref("general.config.obscure_value", 0);' > /usr/lib/firefox-esr/defaults/pref/local-settings.js
-			echo 'pref("general.config.filename", "mozilla.cfg");' >> /usr/lib/firefox-esr/defaults/pref/local-settings.js
-		fi
+			# Disable Pulseaudio timer scheduling which does not work with sndhdmi driver
+			if [ -f /etc/pulse/default.pa ]; then sed "s/load-module module-udev-detect$/& tsched=0/g" -i  /etc/pulse/default.pa; fi
 
-		# Adjust menu
-		if [ -f /etc/xdg/menus/xfce-applications.menu ]; then
-		sed -i -n '/<Menuname>Settings<\/Menuname>/{p;:a;N;/<Filename>xfce4-session-logout.desktop<\/Filename>/!ba;s/.*\n/\
-		\t<Separator\/>\n\t<Merge type="all"\/>\n        <Separator\/>\n        <Filename>armbian-donate.desktop<\/Filename>\
-		\n        <Filename>armbian-support.desktop<\/Filename>\n/};p' /etc/xdg/menus/xfce-applications.menu
-		fi
+		exit 0
+		EOF
+		chmod 755 "${destination}"/DEBIAN/postinst
+	else
+		cat <<-EOF > "${destination}"/DEBIAN/postinst
+		#!/bin/sh -e
 
-		# Hide few items
-		if [ -f /usr/share/applications/display-im6.q16.desktop ]; then mv /usr/share/applications/display-im6.q16.desktop /usr/share/applications/display-im6.q16.desktop.hidden; fi
-		if [ -f /usr/share/applications/display-im6.desktop ]]; then  mv /usr/share/applications/display-im6.desktop /usr/share/applications/display-im6.desktop.hidden; fi
-		if [ -f /usr/share/applications/vim.desktop ]]; then  mv /usr/share/applications/vim.desktop /usr/share/applications/vim.desktop.hidden; fi
-		if [ -f /usr/share/applications/libreoffice-startcenter.desktop ]]; then mv /usr/share/applications/libreoffice-startcenter.desktop /usr/share/applications/libreoffice-startcenter.desktop.hidden; fi
+			# overwrite stock chromium and firefox configuration
+			if [ -d /etc/chromium-browser/ ]; then ln -sf /etc/armbian/chromium.conf /etc/chromium-browser/default; fi
+			if [ -d /etc/chromium.d/ ]; then ln -sf /etc/armbian/chromium.conf /etc/chromium.d/chromium.conf; fi
+			cp -R /etc/armbian/chromium /usr/share
 
-		# Disable Pulseaudio timer scheduling which does not work with sndhdmi driver
-		if [ -f /etc/pulse/default.pa ]; then sed "s/load-module module-udev-detect$/& tsched=0/g" -i  /etc/pulse/default.pa; fi
+			# overwrite stock lightdm greeter configuration
+			if [ -d /etc/armbian/lightdm ]; then cp -R /etc/armbian/lightdm /etc/; fi
 
-	exit 0
-	EOF
-	chmod 755 "${destination}"/DEBIAN/postinst
+			if [ -d /usr/lib/firefox-esr/ ]; then
+				ln -sf /etc/armbian/firefox.conf /usr/lib/firefox-esr/mozilla.cfg
+				echo 'pref("general.config.obscure_value", 0);' > /usr/lib/firefox-esr/defaults/pref/local-settings.js
+				echo 'pref("general.config.filename", "mozilla.cfg");' >> /usr/lib/firefox-esr/defaults/pref/local-settings.js
+			fi
+
+			# Adjust menu
+			if [ -f /etc/xdg/menus/xfce-applications.menu ]; then
+				sed -i -n '/<Menuname>Settings<\/Menuname>/{p;:a;N;/<Filename>xfce4-session-logout.desktop<\/Filename>/!ba;s/.*\n/\
+				\t<Separator\/>\n\t<Merge type="all"\/>\n        <Separator\/>\n        <Filename>armbian-donate.desktop<\/Filename>\
+				\n        <Filename>armbian-support.desktop<\/Filename>\n/};p' /etc/xdg/menus/xfce-applications.menu
+			fi
+
+			# Hide few items
+			if [ -f /usr/share/applications/display-im6.q16.desktop ]; then mv /usr/share/applications/display-im6.q16.desktop /usr/share/applications/display-im6.q16.desktop.hidden; fi
+			if [ -f /usr/share/applications/display-im6.desktop ]]; then  mv /usr/share/applications/display-im6.desktop /usr/share/applications/display-im6.desktop.hidden; fi
+			if [ -f /usr/share/applications/vim.desktop ]]; then  mv /usr/share/applications/vim.desktop /usr/share/applications/vim.desktop.hidden; fi
+			if [ -f /usr/share/applications/libreoffice-startcenter.desktop ]]; then mv /usr/share/applications/libreoffice-startcenter.desktop /usr/share/applications/libreoffice-startcenter.desktop.hidden; fi
+
+			# Disable Pulseaudio timer scheduling which does not work with sndhdmi driver
+			if [ -f /etc/pulse/default.pa ]; then sed "s/load-module module-udev-detect$/& tsched=0/g" -i  /etc/pulse/default.pa; fi
+
+		exit 0
+		EOF
+		chmod 755 "${destination}"/DEBIAN/postinst
+	fi
 
 	# add loading desktop splash service
 	mkdir -p "${destination}"/etc/systemd/system/
@@ -86,17 +107,31 @@ create_desktop_package ()
 	cp -R "${SRC}"/packages/blobs/desktop/chromium "${destination}"/etc/armbian
 
 	# install lightdm greeter
-	cp -R "${SRC}"/packages/blobs/desktop/lightdm "${destination}"/etc/armbian
+	if [[ ${RELEASE} == kali-rolling ]]; then
+		cp -R "${SRC}"/packages/blobs/desktop/lightdm-kali "${destination}"/etc/armbian
+	else
+		cp -R "${SRC}"/packages/blobs/desktop/lightdm "${destination}"/etc/armbian
+	fi
 
 	# install default desktop settings
 	mkdir -p "${destination}"/etc/skel
-	cp -R "${SRC}"/packages/blobs/desktop/skel/. "${destination}"/etc/skel
-
+	if [[ ${RELEASE} == kali-rolling ]]; then
+		cp -R "${SRC}"/packages/blobs/desktop/skel-kali/. "${destination}"/etc/skel
+	else
+		cp -R "${SRC}"/packages/blobs/desktop/skel/. "${destination}"/etc/skel
+	fi
 
 	# using different icon pack. Workaround due to this bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=867779
-	if [[ ${RELEASE} == bionic || ${RELEASE} == stretch || ${RELEASE} == buster || ${RELEASE} == bullseye || ${RELEASE} == focal || ${RELEASE} == eoan || ${RELEASE} == kali-rolling ]]; then
-	sed -i 's/<property name="IconThemeName" type="string" value=".*$/<property name="IconThemeName" type="string" value="Humanity-Dark"\/>/g' \
-	"${destination}"/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+	if [[ ${RELEASE} == bionic || ${RELEASE} == stretch || ${RELEASE} == buster || ${RELEASE} == bullseye || ${RELEASE} == focal || ${RELEASE} == eoan ]]; then
+		sed -i 's/<property name="IconThemeName" type="string" value=".*$/<property name="IconThemeName" type="string" value="Humanity-Dark"\/>/g' \
+		"${destination}"/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+        elif [[ ${RELEASE} == kali-rolling ]]; then
+                # icons
+        	sed -i 's/<property name="IconThemeName" type="string" value=".*$/<property name="IconThemeName" type="string" value="Flat-Remix-Blue-Dark"\/>/g' \
+	        "${destination}"/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		# theme
+		sed -i 's/<property name="ThemeName" type="string" value=".*$/<property name="ThemeName" type="string" value="Kali-Dark"\/>/g' \
+		"${destination}"/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 	fi
 
 	# install dedicated startup icons
