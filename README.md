@@ -72,7 +72,7 @@ KERNEL_ONLY="no" KERNEL_CONFIGURE="no" BUILD_DESKTOP="no" BUILD_MINIMAL="yes"
 
 ## Where to download prebuilt images?
 
-- For RockPro64 and Rock64 visit https://www.govanguard.com/download/rock
+- For RockPro64 and Rock64 visit https://github.com/GoVanguard/karmbian/releases
 - For others visit https://armbian.com/download
 
 
