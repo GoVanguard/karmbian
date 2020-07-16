@@ -213,11 +213,9 @@ create_sources_list()
 		echo "deb http://mirrors.tuna.tsinghua.edu.cn/armbian $RELEASE main ${RELEASE}-utils ${RELEASE}-desktop" > "${SDCARD}"/etc/apt/sources.list.d/armbian.list
 	elif [[ $RELEASE == "kali-rolling" ]]; then
                 echo "deb http://apt.armbian.com bullseye main bullseye-utils bullseye-desktop" > "${SDCARD}"/etc/apt/sources.list.d/armbian.list
-                wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
-                gpg --keyserver hkp://keys.gnupg.net --recv-key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
-                gpg -a --export 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6 | sudo apt-key add -
-                gpg --keyserver hkp://keys.gnupg.net --recv-key ED444FF07D8D0BF6
-                gpg -a --export ED444FF07D8D0BF6 | sudo apt-key add -
+		wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+		apt-key adv --keyserver keys.gnupg.net --recv-keys ED444FF07D8D0BF6
+		apt-key adv --keyserver keys.gnupg.net --recv-keys 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
         else
 		echo "deb http://apt.armbian.com $RELEASE main ${RELEASE}-utils ${RELEASE}-desktop" > "${SDCARD}"/etc/apt/sources.list.d/armbian.list
 	fi

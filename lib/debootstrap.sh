@@ -569,7 +569,7 @@ update_initramfs()
 create_image()
 {
 	# stage: create file name
-	local version="Armbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}"
+	local version="Karmbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}"
 	[[ $BUILD_DESKTOP == yes ]] && version=${version}_desktop
 	[[ $BUILD_MINIMAL == yes ]] && version=${version}_minimal
 	[[ $ROOTFS_TYPE == nfs ]] && version=${version}_nfsboot

@@ -186,7 +186,7 @@ PACKAGE_LIST_DESKTOP_RECOMMENDS="galculator hexchat xfce4-screenshooter network-
 	cups-pk-helper cups geany atril xarchiver"
 
 # Full desktop packages
-PACKAGE_LIST_DESKTOP_FULL="libreoffice libreoffice-style-tango meld remmina kazam avahi-daemon transmission"
+PACKAGE_LIST_DESKTOP_FULL="libreoffice meld remmina kazam avahi-daemon transmission"
 
 # Packages installed before desktop.
 PACKAGE_LIST_PREDEPENDS=""

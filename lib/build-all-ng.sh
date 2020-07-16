@@ -68,7 +68,7 @@ pack_upload ()
 	# pack and upload to server or just pack
 
 	display_alert "Signing" "Please wait!" "info"
-	local version="Armbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}"
+	local version="Karmbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}"
 	local subdir="archive"
 	compression_type=""
 
@@ -137,14 +137,14 @@ build_main ()
 	source "$USERPATCHES_PATH"/lib.config
 	# build images which we do pack or kernel
 	local upload_image upload_subdir
-	upload_image="Armbian_$(cat "${SRC}"/VERSION)_${BOARD^}_${RELEASE}_${BRANCH}_*${VER/-$LINUXFAMILY/}"
+	upload_image="Karmbian_$(cat "${SRC}"/VERSION)_${BOARD^}_${RELEASE}_${BRANCH}_*${VER/-$LINUXFAMILY/}"
 	upload_subdir="archive"
 
 	[[ $BUILD_DESKTOP == yes ]] && upload_image=${upload_image}_desktop
 	[[ $BUILD_MINIMAL == yes ]] && upload_image=${upload_image}_minimal
 	[[ $BETA == yes ]] && local upload_subdir=nightly
 
-	touch "/run/armbian/Armbian_${BOARD^}_${BRANCH}_${RELEASE}_${BUILD_DESKTOP}_${BUILD_MINIMAL}.pid";
+	touch "/run/armbian/Karmbian_${BOARD^}_${BRANCH}_${RELEASE}_${BUILD_DESKTOP}_${BUILD_MINIMAL}.pid";
 
 	if [[ $KERNEL_ONLY != yes ]]; then
 		#if ssh ${SEND_TO_SERVER} stat ${SEND_TO_LOCATION}${BOARD}/${upload_subdir}/${upload_image}* \> /dev/null 2\>\&1; then
@@ -161,7 +161,7 @@ build_main ()
 
 	fi
 
-	rm "/run/armbian/Armbian_${BOARD^}_${BRANCH}_${RELEASE}_${BUILD_DESKTOP}_${BUILD_MINIMAL}.pid"
+	rm "/run/armbian/Karmbian_${BOARD^}_${BRANCH}_${RELEASE}_${BUILD_DESKTOP}_${BUILD_MINIMAL}.pid"
 }
 
 
