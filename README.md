@@ -1,5 +1,5 @@
-<h3 align=center><a href="https://Govanguard.com/kali"><img src=".github/kali.png" alt="Kali logo" width="144"></a><br>
-Karmbian
+<h3 align=center><a href="https://f.hubspotusercontent10.net/hubfs/7266460/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png"><img src="https://f.hubspotusercontent10.net/hubfs/7266460/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png" alt="Karmbian Logo" width="500"></a><br>
+Kali Linux Built Using the Armbian Tool Chain & BSPs  
 </h3>
 
 <p align=right>&nbsp;</p>
@@ -17,9 +17,9 @@ Karmbian
 
 ## Overview
 
-- builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian,
-- covers root filesystem generation, kernel image compilation and bootloader compilation,
-- provides a consistent user experience by keeping system standards across different SBC platforms.
+- Builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian,
+- Covers root filesystem generation, kernel image compilation and bootloader compilation,
+- Provides a consistent user experience by keeping system standards across different SBC platforms.
 
 <p align=right>&nbsp;</p>
 
@@ -28,7 +28,7 @@ Karmbian
 - x64 machine with at least 2GB of memory and ~35GB of disk space for the VM, container or native OS,
 - Ubuntu Bionic 18.04 / Focal 20.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised,
 - Kali 2020 x64 for native building, aria2 compiled and installed seperately
-- superuser rights (configured sudo or root access).
+- Superuser rights (configured sudo or root access).
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
 
