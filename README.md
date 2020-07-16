@@ -1,5 +1,5 @@
 <h3 align=center><a href="https://Govanguard.com/kali"><img src=".github/kali.png" alt="Kali logo" width="144"></a><br>
-Kali Armbian
+Karmbian
 </h3>
 
 <p align=right>&nbsp;</p>
@@ -17,9 +17,8 @@ Kali Armbian
 
 ## Overview
 
-- builds custom Debian or Kali based Linux system optimized for [supported single board computers](https://www.armbian.com/download/),
+- builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian,
 - covers root filesystem generation, kernel image compilation and bootloader compilation,
-- maintains low-level control software for a [selection of hardware](https://www.armbian.com/download/),
 - provides a consistent user experience by keeping system standards across different SBC platforms.
 
 <p align=right>&nbsp;</p>
@@ -37,7 +36,7 @@ Kali Armbian
 
 ```text
 apt-get -y install git
-git clone https://github.com/GoVanguard/armbian
+git clone https://github.com/GoVanguard/karmbian
 cd build
 ./compile.sh
 ```
@@ -59,11 +58,18 @@ Run build tools inside Docker container:
 ./compile.sh docker
 ```
 
-Build minimal CLI Debian buster based image for Odroid XU4. Use modern kernel and write image to the SD card:
+Build minimal CLI of Kali 2020 for the Rock64 (Not RockPro64):
 
 ```text
-./compile.sh BOARD="odroidxu4" BRANCH="current" RELEASE="buster" CARD_DEVICE="/dev/sda" \
-KERNEL_ONLY="no" KERNEL_CONFIGURE="no" BUILD_DESKTOP="no" BUILD_MINIMAL="yes"
+./compile.sh  BOARD=rock64 BRANCH=dev RELEASE=kali-rolling BUILD_MINIMAL=yes BUILD_DESKTOP=no \
+KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
+```
+
+Build full desktop of Kali 2020 for the RockPro64:
+
+```test
+./compile.sh  BOARD=rockpro64 BRANCH=dev RELEASE=kali-rolling BUILD_MINIMAL=no BUILD_DESKTOP=yes \
+KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
 ```
 
 [Build parameters, advanced build options, user defined configuration, build with Docker?](#additional-information)
@@ -72,16 +78,13 @@ KERNEL_ONLY="no" KERNEL_CONFIGURE="no" BUILD_DESKTOP="no" BUILD_MINIMAL="yes"
 
 ## Where to download prebuilt images?
 
-- For RockPro64 and Rock64 visit https://www.govanguard.com/download/rock
+- For RockPro64 and Rock64 visit https://github.com/GoVanguard/karmbian/releases
 - For others visit https://armbian.com/download
-
-
-Armbian [releases](https://docs.armbian.com/Release_Changelog/) quarterly at the end of [February, May, August, November](https://github.com/armbian/documentation/blob/master/docs/Process_Release-Model.md). You are welcome to propose changes to our default [images build list](https://github.com/armbian/build/blob/master/config/targets.conf).
-
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
 
 ## Credits
 
 Kali support developed by Shane Scott, GoVanguard.
+<p>
 Credit to Armbian and all of their contributors for the base system.
