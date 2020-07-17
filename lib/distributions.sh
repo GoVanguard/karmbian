@@ -59,7 +59,7 @@ install_common()
 			# /usr/share/initramfs-tools/hooks/dropbear will automatically add 'id_ecdsa.pub' to authorized_keys file
 			# during mkinitramfs of update-initramfs
 			#cat "${SDCARD}"/etc/dropbear-initramfs/id_ecdsa.pub > "${SDCARD}"/etc/dropbear-initramfs/authorized_keys
-			CRYPTROOT_SSH_UNLOCK_KEY_NAME="Armbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}".key
+			CRYPTROOT_SSH_UNLOCK_KEY_NAME="Karmbian_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}".key
 			# copy dropbear ssh key to image output dir for convenience
 			cp "${SDCARD}"/etc/dropbear-initramfs/id_ecdsa "${DEST}/images/${CRYPTROOT_SSH_UNLOCK_KEY_NAME}"
 			display_alert "SSH private key for dropbear (initramfs) has been copied to:" \
@@ -131,8 +131,8 @@ install_common()
 	chroot "${SDCARD}" /bin/bash -c "chage -d 0 root"
 
 	# change console welcome text
-	echo -e "Armbian ${REVISION} ${RELEASE^} \\l \n" > "${SDCARD}"/etc/issue
-	echo "Armbian ${REVISION} ${RELEASE^}" > "${SDCARD}"/etc/issue.net
+	echo -e "Karmbian ${REVISION} ${RELEASE^} \\l \n" > "${SDCARD}"/etc/issue
+	echo "Karmbian ${REVISION} ${RELEASE^}" > "${SDCARD}"/etc/issue.net
 
 	# enable few bash aliases enabled in Ubuntu by default to make it even
 	sed "s/#alias ll='ls -l'/alias ll='ls -l'/" -i "${SDCARD}"/etc/skel/.bashrc
