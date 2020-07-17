@@ -498,7 +498,7 @@ function boot_logo ()
 {
 display_alert "Building kernel splash logo" "$RELEASE" "info"
 
-	LOGO=${SRC}/packages/blobs/splash/karmbian-logo-wht-bug.png
+	LOGO=${SRC}/packages/blobs/splash/karmbian-boot-logo.png
 	LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
 	LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
 	THROBBER=${SRC}/packages/blobs/splash/spinner.gif
