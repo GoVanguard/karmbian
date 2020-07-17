@@ -450,15 +450,12 @@ fingerprint_image()
 	display_alert "Fingerprinting"
 	cat <<-EOF > "${1}"
 	--------------------------------------------------------------------------------
-	Title:			Armbian $REVISION ${BOARD^} $DISTRIBUTION $RELEASE $BRANCH
+	Title:			Karmbian $REVISION ${BOARD^} $DISTRIBUTION $RELEASE $BRANCH
 	Kernel:			Linux $VER
 	Build date:		$(date +'%d.%m.%Y')
-	Maintainer:		$MAINTAINER <$MAINTAINERMAIL>
-	Authors:		https://www.armbian.com/authors
-	Sources: 		https://github.com/armbian/
-	Support: 		https://forum.armbian.com/
-	Changelog: 		https://www.armbian.com/logbook/
-	Documantation:		https://docs.armbian.com/
+	Maintainer:		Shane Scott <sscott@govanguard.com>
+	Authors:		Shane Scott, https://www.armbian.com/authors
+	Sources: 		https://github.com/Govanguard/karmbian/
 	EOF
 
 	if [ -n "$2" ]; then
@@ -494,14 +491,14 @@ fingerprint_image()
 
 
 #--------------------------------------------------------------------------------------------------------------------------------
-# Create kernel boot logo from packages/blobs/splash/logo.png and packages/blobs/splash/spinner.gif (animated)
+# Create kernel boot logo from packages/blobs/splash/karmbian-logo-wht-bug.png and packages/blobs/splash/spinner.gif (animated)
 # and place to the file /lib/firmware/bootsplash
 #--------------------------------------------------------------------------------------------------------------------------------
 function boot_logo ()
 {
 display_alert "Building kernel splash logo" "$RELEASE" "info"
 
-	LOGO=${SRC}/packages/blobs/splash/logo.png
+	LOGO=${SRC}/packages/blobs/splash/karmbian-logo-wht-bug.png
 	LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
 	LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
 	THROBBER=${SRC}/packages/blobs/splash/spinner.gif
@@ -1364,7 +1361,7 @@ show_developer_warning()
 
 	This allows building experimental configurations that are provided
 	\Z1AS IS\Zn to developers and expert users,
-	\Z1WITHOUT ANY RESPONSIBILITIES\Zn from the Armbian team:
+	\Z1WITHOUT ANY RESPONSIBILITIES\Zn from the Karmbian or Armbian team:
 
 	- You are using these configurations \Z1AT YOUR OWN RISK\Zn
 	- Bug reports related to the dev kernel, CSC, WIP and EOS boards
