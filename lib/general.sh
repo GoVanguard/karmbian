@@ -223,10 +223,13 @@ create_sources_list()
 	# add local package server if defined. Suitable for development
 	[[ -n $LOCAL_MIRROR ]] && echo "deb http://$LOCAL_MIRROR $RELEASE main ${RELEASE}-utils ${RELEASE}-desktop" >> "${SDCARD}"/etc/apt/sources.list.d/armbian.list
 
-	display_alert "Adding Armbian repository and authentication key" "/etc/apt/sources.list.d/armbian.list" "info"
+	display_alert "Adding Armbian and Kali repo authentication keys" "apt" "info"
 	cp "${SRC}"/config/armbian.key "${SDCARD}"
+	cp "${SRC}"/config/kali.key "${SDCARD}"
 	chroot "${SDCARD}" /bin/bash -c "cat armbian.key | apt-key add - > /dev/null 2>&1"
+	chroot "${SDCARD}" /bin/bash -c "cat kali.key | apt-key add - > /dev/null 2>&1"
 	rm "${SDCARD}"/armbian.key
+	rm "${SDCARD}"/kali.key
 }
 
 # fetch_from_repo <url> <directory> <ref> <ref_subdir>
@@ -598,7 +601,7 @@ display_alert "Building kernel splash logo" "$RELEASE" "info"
 	--blob "${SDCARD}"/tmp/throbber72.rgb \
 	--blob "${SDCARD}"/tmp/throbber73.rgb \
 	--blob "${SDCARD}"/tmp/throbber74.rgb \
-	"${SDCARD}"/lib/firmware/bootsplash.armbian >/dev/null 2>&1
+	"${SDCARD}"/lib/firmware/bootsplash.karmbian >/dev/null 2>&1
 	if [[ $BOOT_LOGO == yes || $BOOT_LOGO == desktop && $BUILD_DESKTOP == yes ]]; then
 		[[ -f "${SDCARD}"/boot/armbianEnv.txt ]] &&	grep -q '^bootlogo' "${SDCARD}"/boot/armbianEnv.txt && \
 		sed -i 's/^bootlogo.*/bootlogo=true/' "${SDCARD}"/boot/armbianEnv.txt || echo 'bootlogo=true' >> "${SDCARD}"/boot/armbianEnv.txt
