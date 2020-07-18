@@ -75,16 +75,16 @@ if [ -f /root/.not_logged_in_yet ] && [ -n "$BASH_VERSION" ] && [ "$-" != "${-#*
 
 	if [ "$IMAGE_TYPE" != "nightly" ]; then
 		if [ "$BRANCH" == "dev" ]; then
-			echo -e "\nYou are using an Armbian preview build !!!"
+			echo -e "\nYou are using an Karmbian preview build !!!"
 			echo -e "\nThis image is provided \e[0;31mAS IS\x1B[0m with \e[0;31mNO WARRANTY\x1B[0m and \e[0;31mNO END USER SUPPORT!\x1B[0m.\n"
 		elif [ "$DISTRIBUTION_STATUS" != "supported" ]; then
-			echo -e "\nYou are using an Armbian with unsupported ($DISTRIBUTION_CODENAME) userspace !!!"
+			echo -e "\nYou are using an Karmbian with unsupported ($DISTRIBUTION_CODENAME) userspace !!!"
 			echo -e "\nThis image is provided \e[0;31mAS IS\x1B[0m with \e[0;31mNO WARRANTY\x1B[0m and \e[0;31mNO END USER SUPPORT!\x1B[0m.\n"
 		else
-			echo -e "\n\e[0;31mThank you for choosing Armbian! Support: \e[1m\e[39mwww.armbian.com\x1B[0m\n"
+			echo -e "\n\e[0;31mThank you for choosing Karmbian! Support: \e[1m\e[39mhttps://govanguard.ccom\x1B[0m\n"
 		fi
 	else
-		echo -e "\nYou are using an Armbian nightly build meant only for developers to provide"
+		echo -e "\nYou are using an Karmbian nightly build meant only for developers to provide"
 		echo -e "constructive feedback to improve build system, OS settings or user experience."
 		echo -e "If this does not apply to you, \e[0;31mSTOP NOW!\x1B[0m. Especially don't use this image for"
 		echo -e "daily work since things might not work as expected or at all and may break"
