@@ -20,6 +20,7 @@ Kali Linux Built Using the Armbian Tool Chain & BSPs
 - Builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian.
 - Covers root filesystem generation, kernel image compilation and bootloader compilation.
 - Provides a consistent user experience by keeping system standards across different SBC platforms.
+- Blog Announcement: https://blog.govanguard.com/govanguard-presents-karmbian-kali-linux-using-armbian
 
 <p align=right>&nbsp;</p>
 
@@ -27,7 +28,7 @@ Kali Linux Built Using the Armbian Tool Chain & BSPs
     
 - x64 machine with at least 2GB of memory and ~35GB of disk space for the VM, container or native OS.
 - Ubuntu Bionic 18.04 / Focal 20.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised.
-- Kali 2020 x64 for native building, aria2 compiled and installed seperately.
+- Kali 2020 x64 for native building, aria2 compiled and installed separately.
 - Superuser rights (configured sudo or root access).
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
