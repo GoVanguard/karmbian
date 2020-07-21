@@ -2,6 +2,8 @@
 Kali Linux Built Using the Armbian Tool Chain & BSPs  
 </h3>
 
+Note: RasberryPi 4b support in the works and coming very soon!
+
 <p align=right>&nbsp;</p>
 
 ## Table of contents
@@ -79,7 +81,7 @@ KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
 ## Where to download prebuilt images?
 
 - For RockPro64 and Rock64 visit https://github.com/GoVanguard/karmbian/releases
-- For others visit https://armbian.com/download
+- For others, clone the source and build them :)
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
 
