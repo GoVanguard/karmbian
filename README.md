@@ -2,7 +2,7 @@
 Kali Linux Built Using the Armbian Tool Chain & BSPs  
 </h3>
 
-Note: RasberryPi 4b support in the works and coming very soon!
+<h4 align=center>Note: RasberryPi 4b support in the works and coming very soon!</h4>
 
 <p align=right>&nbsp;</p>
 
