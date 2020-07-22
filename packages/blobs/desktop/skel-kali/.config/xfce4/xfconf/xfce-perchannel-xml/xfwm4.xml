@@ -4,8 +4,8 @@
   <property name="general" type="empty">
     <property name="activate_action" type="string" value="bring"/>
     <property name="borderless_maximize" type="bool" value="true"/>
-    <property name="box_move" type="bool" value="true"/>
-    <property name="box_resize" type="bool" value="true"/>
+    <property name="box_move" type="bool" value="false"/>
+    <property name="box_resize" type="bool" value="false"/>
     <property name="button_layout" type="string" value="O|SHMC"/>
     <property name="button_offset" type="int" value="0"/>
     <property name="button_spacing" type="int" value="0"/>
@@ -65,7 +65,7 @@
     <property name="toggle_workspaces" type="bool" value="false"/>
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="urgent_blink" type="bool" value="false"/>
-    <property name="use_compositing" type="bool" value="true"/>
+    <property name="use_compositing" type="bool" value="false"/>
     <property name="workspace_count" type="int" value="2"/>
     <property name="wrap_cycle" type="bool" value="true"/>
     <property name="workspace_names" type="array">

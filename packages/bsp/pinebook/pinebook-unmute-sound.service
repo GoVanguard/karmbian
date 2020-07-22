@@ -1,0 +1,14 @@
+[Unit]
+Description=A simple service to unmute the Pinebook sound at boot
+ConditionKernelCommandLine=!pinebook.forceserial
+
+[Service]
+Type=oneshot
+ExecStart="amixer set -c 0 "AIF1 Slot 0 Digital DAC" unmute"
+ExecStart="amixer -c 0 set 'Master' unmute"
+ExecStart="amixer sset 'Master' 100%"
+
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

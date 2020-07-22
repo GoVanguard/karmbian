@@ -996,7 +996,9 @@ prepare_host()
 	nfs-kernel-server btrfs-progs ncurses-term p7zip-full kmod dosfstools libc6-dev-armhf-cross imagemagick \
 	curl patchutils liblz4-tool libpython2.7-dev linux-base swig aptly acl python3-dev python3-distutils \
 	locales ncurses-base pixz dialog systemd-container udev lib32stdc++6 libc6-i386 lib32ncurses6 lib32tinfo6 \
-	bison libbison-dev flex libfl-dev cryptsetup gpg gnupg1 cpio aria2 pigz dirmngr python3-distutils"
+	patchutils bison libbison-dev flex libfl-dev cryptsetup gpg gnupg1 cpio aria2 pigz dirmngr python3-distutils \
+	libxml2-dev libcppunit-dev autoconf automake autotools-dev autopoint libtool nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev \
+	libxml2-dev zlib1g-dev libsqlite3-dev pkg-config libgcrypt-dev libgpg-error-dev libgcrypt-dev libssl-dev libexpat1-dev  libexpat1-dev"
 
 	local codename=$(lsb_release -sc)
 
@@ -1030,7 +1032,11 @@ prepare_host()
 		exit_with_error "Windows subsystem for Linux is not a supported build environment"
 	fi
 
-	if [[ -z $codename || "focal" == "$codename" || "eoan" == "$codename"  || "debbie" == "$codename"  || "buster" == "$codename" || "ulyana" == "$codename" ]]; then
+        if [[ -z $codename || "bionic" == "$codename" ]]; then
+            hostdeps="${hostdeps/lib32ncurses6 lib32tinfo6/lib32ncurses5 lib32tinfo5}"
+        fi
+
+	if [[ "focal" == "$codename" || "eoan" == "$codename"  || "debbie" == "$codename"  || "buster" == "$codename" || "ulyana" == "$codename" ]]; then
 	    hostdeps="${hostdeps/lib32ncurses6 lib32tinfo6/lib32ncurses6 lib32tinfo6}"
 	fi
 
@@ -1085,7 +1091,9 @@ prepare_host()
 		apt-get -q update
 		apt-get -y upgrade
 		apt-get -q -y --no-install-recommends install -o Dpkg::Options::='--force-confold' "${deps[@]}" | tee -a "${DEST}"/debug/hostdeps.log
-		update-ccache-symlinks
+                /usr/sbin/update-ccache-symlinks
+                echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc
+                source ~/.bashrc && echo $PATH
 	fi
 
 	# sync clock
