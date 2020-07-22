@@ -1,0 +1,19 @@
+#!/bin/bash
+THIS_SCRIPT="set-datetime"
+MOTD_DISABLE=""
+
+[[ -f /etc/default/armbian-motd ]] && . /etc/default/armbian-motd
+
+for f in $MOTD_DISABLE; do
+        [[ $f == $THIS_SCRIPT ]] && exit 0
+done
+
+. /etc/armbian-release
+
+printf "First boot! Let's set the date and time. Enter it in the format mm/dd/yyyy hh:mm\x1B[0m\n"
+read -p "Enter the date and time:" val
+echo $val
+date -s "${val}"
+
+(sleep 1 && rm "$0") &
+
