@@ -1,6 +1,8 @@
-<h3 align=center><a href="https://f.hubspotusercontent10.net/hubfs/7266460/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png"><img src="https://f.hubspotusercontent10.net/hubfs/7266460/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png" alt="Karmbian Logo" width="500"></a><br>
+<h3 align=center><a href="https://blog.govanguard.com/hubfs/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png"><img src="https://blog.govanguard.com/hubfs/Karmbian%20Logo_Karmbain%20Logo%20Blk%20Horizontal.png" alt="Karmbian Logo" width="500"></a><br>
 Kali Linux Built Using the Armbian Tool Chain & BSPs  
 </h3>
+
+<h4 align=center>Note: RasberryPi 4b support in the works and coming very soon!</h4>
 
 <p align=right>&nbsp;</p>
 
@@ -17,17 +19,18 @@ Kali Linux Built Using the Armbian Tool Chain & BSPs
 
 ## Overview
 
-- Builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian,
-- Covers root filesystem generation, kernel image compilation and bootloader compilation,
+- Builds custom Kali based Linux system optimized for RK3399 SBC and other single board computers supported by Armbian.
+- Covers root filesystem generation, kernel image compilation and bootloader compilation.
 - Provides a consistent user experience by keeping system standards across different SBC platforms.
+- Blog Announcement: https://blog.govanguard.com/govanguard-presents-karmbian-kali-linux-using-armbian
 
 <p align=right>&nbsp;</p>
 
 ## What do you need to get started?
     
-- x64 machine with at least 2GB of memory and ~35GB of disk space for the VM, container or native OS,
-- Ubuntu Bionic 18.04 / Focal 20.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised,
-- Kali 2020 x64 for native building, aria2 compiled and installed seperately
+- x64 machine with at least 2GB of memory and ~35GB of disk space for the VM, container or native OS.
+- Ubuntu Bionic 18.04 / Focal 20.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised.
+- Kali 2020 x64 for native building, aria2 compiled and installed separately.
 - Superuser rights (configured sudo or root access).
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
@@ -79,7 +82,7 @@ KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,gpg,img
 ## Where to download prebuilt images?
 
 - For RockPro64 and Rock64 visit https://github.com/GoVanguard/karmbian/releases
-- For others visit https://armbian.com/download
+- For others, clone the source and build them :)
 
 <p align=right><a href=#table-of-contents>⇧</a></p>
 
